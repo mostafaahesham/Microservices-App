@@ -1,0 +1,41 @@
+{
+  "name": "merchant-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "user-app-dev": "cross-env NODE_ENV=dev PORT=8001 DB_NAME=ecommerce-users BASE_URL=http://localhost:8001 nodemon src/app.js",
+    "user-app-prod": "cross-env NODE_ENV=prod PORT=7001 DB_NAME=ecommerce-users BASE_URL=http://localhost:7001 node src/app.js",
+    "build": "npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "events": "^3.3.0",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^7.0.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "juice": "^10.0.0",
+    "moment-timezone": "^0.5.44",
+    "mongoose": "^8.0.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nats": "^2.19.0",
+    "nodemailer": "^6.9.8",
+    "path": "^0.12.7",
+    "sharp": "^0.28.2",
+    "util": "^0.12.5",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
