@@ -35,7 +35,7 @@ exports.userGoogleAuth = asyncHandler(async (req, res, next) => {
       });
     }
     const token = generateToken(user._id);
-
+    natsClient.publish("user.signup", { user });
     res.status(201).json({
       status: 1,
       msg: "",
@@ -79,7 +79,7 @@ exports.userAppleAuth = asyncHandler(async (req, res, next) => {
       msg =
         "Your iCloud email address is currently set to private. While this ensures your privacy, it also means you won't receive any emails from Merchant, including updates, notifications, and password reset links.";
     }
-
+    natsClient.publish("user.signup", { user });
     res.status(201).json({
       status: 1,
       msg: msg,
@@ -121,7 +121,7 @@ exports.userSignUp = asyncHandler(async (req, res, next) => {
   }
 
   const token = generateToken(user._id);
-
+  natsClient.publish("user.signup", { user });
   res.status(201).json({
     status: 1,
     msg: `an email with a confirmation link was sent to ${user.email}`,
@@ -231,7 +231,7 @@ exports.userForgotPassword = asyncHandler(async (req, res, next) => {
       new NotFoundError(`couldn't find a user with email: ${req.body.email}`)
     );
   }
-
+  natsClient.publish("user.password.forgotten", { user, passwordResetCode });
   res.status(200).json({
     status: 1,
     msg: `a password reset code valid for ${process.env.PASSWORD_RESET_CODE_EXPIRE_TIME} mins. was sent to ${user.email}`,
@@ -299,7 +299,7 @@ exports.userResetPassword = asyncHandler(async (req, res, next) => {
   }
 
   const token = generateToken(user._id);
-
+  natsClient.publish("user.password.reset", { user });
   res.status(201).json({
     status: 1,
     msg: "password updated successfully",
