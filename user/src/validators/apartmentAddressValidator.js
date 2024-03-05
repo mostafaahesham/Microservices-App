@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
 
-const requestValidator = require("../middlewares/request-validator");
+const requestValidator = require("../../../middlewares/request-validator");
 
 const aptartmentAddressValidator = (prefix = "") => [
   body(`${prefix}type`).default("APT"),

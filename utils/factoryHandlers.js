@@ -3,8 +3,8 @@ const asyncHandler = require("express-async-handler");
 const checkDocExistence = require("./checkDocExistence");
 const ApiFeatures = require("./apiFeatures");
 
-const BadRequestError = require("../../../errors/bad-request-error");
-const NotFoundError = require("../../../errors/not-found-error");
+const BadRequestError = require("../errors/bad-request-error");
+const NotFoundError = require("../errors/not-found-error");
 
 exports.createOne = (Model) =>
   asyncHandler(async (req, res, next) => {

@@ -2,7 +2,7 @@ const { body, param } = require("express-validator");
 const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 
-const requestValidator = require("../middlewares/request-validator");
+const requestValidator = require("../../../middlewares/request-validator");
 
 const BadRequestError = require("../../../errors/bad-request-error");
 const NotFoundError = require("../../../errors/not-found-error");

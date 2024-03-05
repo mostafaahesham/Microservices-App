@@ -1,4 +1,4 @@
-const NotFoundError = require("../../../errors/not-found-error");
+const NotFoundError = require("../errors/not-found-error");
 
 const checkDocExistance = async (req, res, next, Model, key, val) => {
   let doc;

@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const { dbConnection } = require("./database/dbConnection");
-const errorHandler = require("../../middlewares/error-handler");
+const errorHandler = require("./middlewares/error-handler");
 const mountRoutes = require("../src/routes/mountRoutes");
 
 const NotFoundError = require("../../errors/not-found-error");

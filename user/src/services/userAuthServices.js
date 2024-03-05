@@ -5,9 +5,9 @@ const fs = require("fs");
 const path = require("path");
 const asyncHandler = require("express-async-handler");
 
-const generateRandomCode = require("../utils/randomCode");
-const { generateToken } = require("../utils/token");
-const checkDocExistence = require("../utils/checkDocExistence");
+const generateRandomCode = require("../../../utils/randomCode");
+const { generateToken } = require("../../../utils/token");
+const checkDocExistence = require("../../../utils/checkDocExistence");
 const userModel = require("../models/userModel");
 
 const BadRequestError = require("../../../errors/bad-request-error");

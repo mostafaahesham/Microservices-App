@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const ms = require("ms");
 
-const NotAuthenticatedError = require("../../../errors/not-authenticated-error");
-const TokenExpiredError = require("../../../errors/token-expired-error");
+const NotAuthenticatedError = require("../errors/not-authenticated-error");
+const TokenExpiredError = require("../errors/token-expired-error");
 
 exports.generateToken = (payload) => {
   const token = jwt.sign({ id: payload }, process.env.JWT_SECRET_KEY, {

@@ -2,7 +2,7 @@ const express = require("express");
 
 const userModel = require("../models/userModel");
 
-const auth = require("../middlewares/authentication-authorization");
+const auth = require("../../../middlewares/authentication-authorization");
 
 const {
   selfUpdateUserInfo,
@@ -23,7 +23,7 @@ const {
 } = require("../validators/userValidators");
 
 const addressValidatorSelector = require("../middlewares/address-validator-selector");
-const embedObjectId = require("../middlewares/embedd-object-id");
+const embedObjectId = require("../../../middlewares/embedd-object-id");
 
 const router = express.Router();
 

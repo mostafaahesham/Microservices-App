@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 
 const userModel = require("../models/userModel");
 
-const { generateToken, verifyToken } = require("../utils/token");
-const { generateAddressFields } = require("../utils/addresses");
+const { generateToken, verifyToken } = require("../../../utils/token");
+const { generateAddressFields } = require("../utils/addressUtils");
 
 const BadRequestError = require("../../../errors/bad-request-error");
 const NotFoundError = require("../../../errors/not-found-error");

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Order Requested</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .container {
+        max-width: 650px;
+        margin: 20px auto;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between; /* This will push children to edges */
+        align-items: center;
+        background-image: url("https://iili.io/HSxGy1S.png");
+        background-position: center;
+        background-size: contain;
+        color: #ffffff;
+        padding: 20px;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .order-summary {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .header img {
+        width: 120px; /* Adjust as needed */
+        height: auto;
+        object-fit: contain;
+        margin-left: auto; /* This pushes the image to the right */
+      }
+      .content {
+        padding: 20px;
+        line-height: 1.6;
+        color: #555;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      #vendorAddressContainer {
+        border: 1px solid lightgray; /* Adjust color to fit your design */
+        border-radius: 10px; /* This creates circular corners */
+        padding: 15px;
+        margin: 20px 0; /* Adds some space around the container */
+        background-color: #f9f9f9; /* Light background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+      }
+
+      .footer {
+        background-color: #333333;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        text-align: center; /* Updated to center-align text */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .table,
+      .table th,
+      .table td {
+        border: 1px solid #ddd;
+        text-align: center; /* Updated to center-align text */
+      }
+      .table th,
+      .table td {
+        text-align: center; /* Updated to center-align text */
+        padding: 8px;
+      }
+      .table th {
+        background-color: #008989;
+        color: #ffffff;
+        text-align: center; /* Updated to center-align text */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .table .promo-code-row {
+        background-color: #f2f2f2; /* Light grey background */
+        color: #008989; /* Use the theme color for text */
+      }
+      .table .promo-code-row td {
+        font-weight: bold; /* Make the text bold */
+      }
+
+      .highlight {
+        color: #e8b453;
+      }
+      @media screen and (max-width: 600px) {
+        .header,
+        .content,
+        .footer {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <h2 class="order-summary">New Order Requested</h2>
+          <img
+            src="https://iili.io/HSxzfFp.png"
+            alt="Company Logo"
+            style="width: 35%; height: auto; object-fit: contain"
+          />
+        </div>
+      </div>
+      <div class="content">
+        <h2>Hello {{ownerName}},</h2>
+        <p>
+          You have a new order request from {{brandName}}. Below are the details
+          for the products you need to prepare for shipment.
+        </p>
+        <h3 class="highlight">Order Number: {{orderNumber}}</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Variant</th>
+              <th>Size</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{orderItems}}
+          </tbody>
+        </table>
+        <h3>Pickup Address:</h3>
+        <div id="vendorAddressContainer">{{pickupAddress}}</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="2">Payment Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Total Price</td>
+              <td><span class="highlight">{{totalPrice}} EGP</span></td>
+            </tr>
+            <tr>
+              <td>Merchant commission</td>
+              <td><span class="highlight">-{{commission}} EGP (-{{commissionPercentage}}%)</span></td>
+            </tr>
+            <tr>
+              <th>Total Payment</th>
+              <th><span class="highlight">{{totalPayment}} EGP</span></th>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Please ensure the order is ready for pickup in a maximum period of 48
+          Hours.
+        </p>
+        <p>
+          If you have any questions, please reach out to us at
+          <a href="mailto:support@merchantapp.co" style="color: #008989"
+            >support@merchantapp.co</a
+          >.
+        </p>
+      </div>
+      <div class="footer">
+        <p>&copy; 2024 MerchantEG. All rights reserved.</p>
+      </div>
+    </div>
+    <script>
+      // Assuming the address is injected as a JSON string into {{address}}
+      function displayAddress() {
+        // Get the container where the address is to be displayed
+        var container = document.getElementById("vendorAddressContainer");
+
+        // Parse the JSON string inside the container (initially set by server-side template)
+        var addressObj = JSON.parse(container.innerHTML);
+
+        // Clear the container before displaying the address values
+        container.innerHTML = "";
+
+        // Display each value in its own paragraph
+        Object.values(addressObj).forEach(function (value) {
+          var p = document.createElement("p");
+          p.textContent = value;
+          container.appendChild(p);
+        });
+      }
+      displayAddress();
+    </script>
+  </body>
+</html>

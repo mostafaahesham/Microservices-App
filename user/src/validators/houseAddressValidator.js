@@ -1,5 +1,5 @@
 const { body } = require("express-validator");
-const requestValidator = require("../middlewares/request-validator");
+const requestValidator = require("../../../middlewares/request-validator");
 
 const houseAddressValidator = (prefix = "") => [
   body(`${prefix}type`).default("HOUSE"),

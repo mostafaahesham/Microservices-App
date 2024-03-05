@@ -2,9 +2,9 @@ const asyncHandler = require("express-async-handler");
 
 const { verifyToken } = require("../utils/token");
 
-const BadRequestError = require("../../../errors/bad-request-error");
-const NotAuthenticatedError = require("../../../errors/not-authenticated-error");
-const NotAuthorizedError = require("../../../errors/not-authorized-error");
+const BadRequestError = require("../errors/bad-request-error");
+const NotAuthenticatedError = require("../errors/not-authenticated-error");
+const NotAuthorizedError = require("../errors/not-authorized-error");
 
 exports.authenticate = asyncHandler(async (req, res, next, models) => {
   let token;

@@ -1,4 +1,4 @@
-const CustomError = require("../../../errors/custom-error");
+const CustomError = require("../errors/custom-error");
 
 const { deleteUploadedFilesOnReqError } = require("../utils/fileManager");
 

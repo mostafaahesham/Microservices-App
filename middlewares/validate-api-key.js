@@ -1,4 +1,4 @@
-const NotAuthorizedError = require("../../../errors/not-authorized-error");
+const NotAuthorizedError = require("../errors/not-authorized-error");
 
 function checkApiKey(req, res, next) {
   const apiKey = req.headers["x-api-key"];
