@@ -46,8 +46,4 @@ app.use(errorHandler);
 
 process.on("unhandledRejection", (err) => {
   console.error(`Unhandled Rejection Error: ${err.name} | ${err.message}`);
-  server.close(() => {
-    console.error(`Shutting down ...`);
-    process.exit(1);
-  });
 });
