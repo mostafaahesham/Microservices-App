@@ -3,7 +3,11 @@ const path = require("path");
 const juice = require("juice");
 
 exports.accountDeletionSuccessfulEmail = async (name) => {
-  const templatePath = path.join(__dirname, "templates", "user_account_deleted.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "user_account_deleted.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 
@@ -11,7 +15,11 @@ exports.accountDeletionSuccessfulEmail = async (name) => {
 };
 
 exports.forgotPasswordEmail = async (name, code) => {
-  const templatePath = path.join(__dirname, "./templates", "reset_password_code.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "reset_password_code.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 
@@ -21,7 +29,7 @@ exports.forgotPasswordEmail = async (name, code) => {
 exports.signUpConfirmationEmail = async (name, verificationLink) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "signup_confirmation_link.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -35,7 +43,7 @@ exports.signUpConfirmationEmail = async (name, verificationLink) => {
 exports.passwordResetCodeVerifiedEmail = async (name) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "reset_password_confirmation.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -47,7 +55,7 @@ exports.passwordResetCodeVerifiedEmail = async (name) => {
 exports.passwordResetSuccessfulEmail = async (name) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "user_change_password_confirmation.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -59,7 +67,7 @@ exports.passwordResetSuccessfulEmail = async (name) => {
 exports.accountInfoUpdateSuccessfulEmail = async (name) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "user_change_account_info_confirmation.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -71,7 +79,7 @@ exports.accountInfoUpdateSuccessfulEmail = async (name) => {
 exports.vendorSignupSuccessfulEmail = async (brandOwner, brandName) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "brand_signup_wait_for_confirmation.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -85,7 +93,7 @@ exports.vendorSignupSuccessfulEmail = async (brandOwner, brandName) => {
 exports.signupSuccessfulEmail = async (name) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "signup_confirmation_success.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -97,7 +105,7 @@ exports.signupSuccessfulEmail = async (name) => {
 exports.vendorWaitForApprovalEmail = async (name) => {
   const templatePath = path.join(
     __dirname,
-    "./templates",
+    "../templates",
     "brand_signup_wait_for_confirmation.html"
   );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
@@ -109,7 +117,11 @@ exports.vendorWaitForApprovalEmail = async (name) => {
 };
 
 exports.vendorApprovalEmail = async (brandName, brandOwner) => {
-  const templatePath = path.join(__dirname, "./templates", "brand_accepted.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "brand_accepted.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 
@@ -120,7 +132,11 @@ exports.vendorApprovalEmail = async (brandName, brandOwner) => {
 };
 
 exports.vendorRejectionEmail = async (brandOwner) => {
-  const templatePath = path.join(__dirname, "./templates", "brand_rejected.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "brand_rejected.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 
@@ -128,7 +144,11 @@ exports.vendorRejectionEmail = async (brandOwner) => {
 };
 
 exports.vendorPauseEmail = async (brandName, brandOwner) => {
-  const templatePath = path.join(__dirname, "./templates", "brand_paused.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "brand_paused.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 
@@ -138,7 +158,11 @@ exports.vendorPauseEmail = async (brandName, brandOwner) => {
 };
 
 exports.vendorResumeEmail = async (brandName, brandOwner) => {
-  const templatePath = path.join(__dirname, "./templates", "brand_resumed.html");
+  const templatePath = path.join(
+    __dirname,
+    "../templates",
+    "brand_resumed.html"
+  );
   const htmlContent = await fs.promises.readFile(templatePath, "utf-8");
   const inlinedHtmlContent = juice(htmlContent);
 

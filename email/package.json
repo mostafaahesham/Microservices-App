@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "user-app-dev": "cross-env NODE_ENV=dev PORT=8011 DB_NAME=ecommerce-emails BASE_URL=http://localhost:8011 nodemon src/app.js",
-    "user-app-prod": "cross-env NODE_ENV=prod PORT=7011 DB_NAME=ecommerce-emails BASE_URL=http://localhost:7011 node src/app.js",
+    "email-app-dev": "cross-env NODE_ENV=dev PORT=8011 DB_NAME=ecommerce-emails BASE_URL=http://localhost:8011 nodemon src/app.js",
+    "email-app-prod": "cross-env NODE_ENV=prod PORT=7011 DB_NAME=ecommerce-emails BASE_URL=http://localhost:7011 node src/app.js",
     "build": "npm install"
   },
   "keywords": [],

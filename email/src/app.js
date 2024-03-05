@@ -7,11 +7,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const { dbConnection } = require("./database/dbConnection");
-const errorHandler = require("./middlewares/error-handler");
-const mountRoutes = require("../src/routes/mountRoutes");
+const errorHandler = require("../../middlewares/error-handler");
 
 const NotFoundError = require("../../errors/not-found-error");
-const NatsClient = require("../../nats-shared-lib/src/natsClient");
+
+const { subscribeToEvents } = require("./events/eventSubscribers");
 
 dotenv.config({ path: "src/config.env" });
 
@@ -19,10 +19,7 @@ const app = express();
 
 const server = dbConnection(app);
 
-const natsClient = new NatsClient();
-natsClient.connect();
-
-global.natsClient = natsClient;
+subscribeToEvents();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,8 +28,6 @@ app.use(cors());
 if (process.env.NODE_ENV == "dev") {
   app.use(morgan("dev"));
 }
-
-mountRoutes(app);
 
 console.log(`mode: ${process.env.NODE_ENV}`);
 console.log(`BASE_URL: ${process.env.BASE_URL}`);

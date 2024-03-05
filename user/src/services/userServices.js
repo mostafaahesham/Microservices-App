@@ -36,7 +36,7 @@ exports.selfUpdateUserInfo = asyncHandler(async (req, res, next) => {
   }
 
   const newImage = req.body.image ? req.body.image : null;
-
+  natsClient.publish("user.info.updated", { user, newImage, previousImage });
   res
     .status(200)
     .json({ status: 1, msg: "user info updated successfully", data: user });
@@ -64,7 +64,7 @@ exports.selfUpdateUserPassword = asyncHandler(async (req, res, next) => {
   }
 
   const token = generateToken(user._id);
-
+  natsClient.publish("user.password.updated", { user });
   res.status(200).json({
     status: 1,
     msg: "user password updated successfully",
@@ -89,7 +89,7 @@ exports.selfAddUserAddress = asyncHandler(async (req, res, next) => {
       new BadRequestError("couldn't add user address, please try again")
     );
   }
-
+  natsClient.publish("user.info.updated", { user });
   res
     .status(200)
     .json({ status: 1, msg: "user address added successfully", data: user });
@@ -165,6 +165,7 @@ exports.selfUpdateUserAddressById = asyncHandler(async (req, res, next) => {
       new BadRequestError("couldn't update user address, please try again")
     );
   }
+  natsClient.publish("user.info.updated", { user });
   res
     .status(200)
     .json({ status: 1, msg: "user address updated successfully", data: user });
@@ -211,7 +212,7 @@ exports.selfRemoveUserAddressById = asyncHandler(async (req, res, next) => {
       new BadRequestError("couldn't remove user address, please try again")
     );
   }
-
+  natsClient.publish("user.info.updated", { user });
   res
     .status(200)
     .json({ status: 1, msg: "user address removed successfully", data: user });
@@ -246,6 +247,6 @@ exports.selfDeleteUser = asyncHandler(async (req, res, next) => {
   const user = req.user;
 
   await userModel.findByIdAndDelete(req.user._id);
-
+  natsClient.publish("user.account.deleted", { user });
   res.status(200).json({ status: 1, msg: "user deleted successfully" });
 });

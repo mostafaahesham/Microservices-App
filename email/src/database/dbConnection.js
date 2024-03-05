@@ -3,7 +3,7 @@ const DatabaseConnectionError = require("../../../errors/database-connection-err
 const { connect, set } = require("mongoose");
 
 const options = {
-  maxPoolSize: 200, // Correct option name for setting the connection pool size
+  maxPoolSize: 200, 
   autoIndex: false,
   dbName: process.env.DB_NAME,
 };

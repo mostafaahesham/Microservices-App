@@ -1,5 +1,5 @@
 let instance = null;
-const { connect } = require('nats');
+const { connect } = require("nats");
 
 class NatsClient {
   constructor() {
