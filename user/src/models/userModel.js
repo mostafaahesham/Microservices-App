@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema(
     phoneNumber: {
       type: Number,
     },
+    image: {
+      type: String,
+    },
     address: {
       type: mongoose.Schema.Types.Mixed,
     },
@@ -58,6 +61,21 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+const setImageURL = (doc) => {
+  if (doc.image) {
+    const imageURL = `${process.env.BASE_URL}/${doc.image}`;
+    doc.image = imageURL;
+  }
+};
+
+userSchema.post("init", (doc) => {
+  setImageURL(doc);
+});
+
+userSchema.post("save", async (doc) => {
+  setImageURL(doc);
+});
 
 userSchema.pre("save", function (next) {
   const singleAddress = this.address;

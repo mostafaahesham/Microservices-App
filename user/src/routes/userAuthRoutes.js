@@ -18,11 +18,18 @@ const {
   userResetPasswordValidator,
 } = require("../validators/userAuthValidators");
 
+const {
+  uploadUserImage,
+  processUserImage,
+} = require("../middlewares/image-handler");
+
 const router = express.Router();
 
 router.route("/google").post(userGoogleAuth);
 router.route("/apple").post(userAppleAuth);
-router.route("/sign-up").post(userSignUpValidator, userSignUp);
+router
+  .route("/sign-up")
+  .post(uploadUserImage, processUserImage, userSignUpValidator, userSignUp);
 router.route("/sign-in").post(userSignInValidator, userSignIn);
 router
   .route("/forgot-password")

@@ -9,7 +9,6 @@ const {
 } = require("./eventActions");
 
 exports.onUserSignup = async (user) => {
-  console.log(user.email);
   if (user.provider === "email") {
     sendUserSignUpConfirmationLinkEmail(user);
   } else {

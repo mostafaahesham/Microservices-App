@@ -13,17 +13,22 @@ const mountRoutes = require("../src/routes/mountRoutes");
 const NotFoundError = require("../../errors/not-found-error");
 const NatsClient = require("../../nats-shared-lib/src/natsClient");
 
+const { subscribeToEvents } = require("./events/eventSubscribers");
+
 dotenv.config({ path: "src/config.env" });
 
 const app = express();
 
 const server = dbConnection(app);
 
+subscribeToEvents();
+
 const natsClient = new NatsClient();
 natsClient.connect();
 
 global.natsClient = natsClient;
 
+app.use(express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());

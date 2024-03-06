@@ -29,7 +29,7 @@ const deleteFile = async (filePath) => {
 exports.deleteFile = deleteFile;
 
 exports.deleteUploadedFilesOnReqError = async (req) => {
-  const basePath = `uploads/${req.originalUrl.split("/")[3]}/`;
+  const basePath = `src/uploads`;
   const fileNames = extractValuesToList(req.body, [
     "image",
     "logo",
@@ -37,6 +37,6 @@ exports.deleteUploadedFilesOnReqError = async (req) => {
   ]);
 
   await Promise.all(
-    fileNames.map((fileName) => deleteFile(`${basePath}${fileName}`))
+    fileNames.map((fileName) => deleteFile(`${basePath}/${fileName}`))
   );
 };
